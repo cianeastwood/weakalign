@@ -20,7 +20,7 @@ def download_and_uncompress(url, dest=None, chunk_size=1024, replace="ask",
             return
     # download file
     with open(dest, "wb") as f:
-            response = requests.get(url, stream=True)
+            response = requests.get(url, stream=True, headers={'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'})
             total_length = response.headers.get('content-length')
 
             if total_length is None: # no content length header

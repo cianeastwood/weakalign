@@ -123,8 +123,8 @@ else:
 checkpoint_name = os.path.join(args.result_model_dir,
                                args.result_model_fn + checkpoint_suffix + '.pth.tar')
 
-print(checkpoint_name)    
-    
+print(checkpoint_name)
+
 # Train
 best_test_loss = float("inf")
 
@@ -137,7 +137,7 @@ def process_epoch(mode,epoch,model,loss_fn,optimizer,dataloader,batch_preprocess
         tnf_batch = batch_preprocessing_fn(batch)
         theta = model(tnf_batch)
         loss = loss_fn(theta,tnf_batch['theta_GT'])
-        loss_np = loss.data.cpu().numpy()[0]
+        loss_np = loss.data.cpu().numpy()[()]
         epoch_loss += loss_np
         if mode=='train':
             loss.backward()
